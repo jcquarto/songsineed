@@ -9,7 +9,6 @@ group :development do
   gem 'sqlite3-ruby', :require => 'sqlite3'
 end
 
-
 gem 'heroku'
 
 # annotate the models
@@ -25,7 +24,7 @@ gem 'hpricot'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano'
+# gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
