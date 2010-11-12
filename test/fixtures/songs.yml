@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  artist: MyString
+  album: MyString
+  genre: MyString
+
+two:
+  title: MyString
+  artist: MyString
+  album: MyString
+  genre: MyString
+
+# == Schema Information
+#
+# Table name: songs
+#
+#  id         :integer         not null, primary key
+#  title      :string(255)
+#  artist     :string(255)
+#  album      :string(255)
+#  genre      :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  notes      :text
+#  found      :boolean         default(FALSE)
+#
+

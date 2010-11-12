@@ -1,0 +1,42 @@
+<%= form_for(@song) do |f| %>
+  <% if @song.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@song.errors.count, "error") %> prohibited this song from being saved:</h2>
+
+      <ul>
+      <% @song.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :artist %><br />
+    <%= f.text_field :artist %>
+  </div>
+  <div class="field">
+    <%= f.label :album %><br />
+    <%= f.text_field :album %>
+  </div>
+  <div class="field">
+    <%= f.label :genre %><br />
+	<% @genres.each do |genre| %>
+		<%= check_box_tag 'song[genre_ids][]', genre.id, @song.genre_ids.include?(genre.id) %><%= genre.name.humanize %>
+	<% end %>
+  </div>
+  <div class="field">
+ 	<%= f.check_box(:found, {}, true, false) %> Found?
+  </div>
+  <div class="field">
+	<%= f.label :notes %><br />
+	<%= f.text_area(:notes, {:rows=>2, :cols=>30})%>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
