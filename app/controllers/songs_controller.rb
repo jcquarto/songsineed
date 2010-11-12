@@ -11,7 +11,7 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.xml
   def index
-    @songs = Song.all
+    @songs = Song.all.order('found ASC, created_at ASC, title')
 
     respond_to do |format|
       format.html # index.html.erb
