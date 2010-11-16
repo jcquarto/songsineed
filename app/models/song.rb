@@ -1,5 +1,13 @@
 class Song < ActiveRecord::Base
   has_and_belongs_to_many :genres
+  
+  def self.search(search)
+    if search
+      where( 'title LIKE ? OR artist LIKE ? or album LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%" )
+    else
+      scoped
+    end
+  end
 end
 
 # == Schema Information
