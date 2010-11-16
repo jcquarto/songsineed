@@ -22,7 +22,7 @@
     <td><%= song.artist %></td>
     <td><%= song.album %></td>
     <td><%= song.genres.collect(&:name).to_sentence %></td>
-	<td><%= song.created_at.strftime("%b %Y") %></td>
+	<td><%= song.created_at.strftime("%D") %></td>
 	<td><input type="checkbox" class="song_found" data-id="<%= song.id %>" <%= (song.found) ? "checked" : "" %>></td>
 	<td><%= song.notes %></td>
     <!--<td><%= link_to 'Show', song %></td>-->
@@ -33,7 +33,7 @@
   </tbody>
 </table>
 
-<%= will_paginate, @songs %>
+<%= will_paginate @songs %>
 <br />
 
 <%= link_to 'add new song', new_song_path %>

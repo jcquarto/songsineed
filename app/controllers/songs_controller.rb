@@ -13,7 +13,7 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.xml
   def index
-    @songs = Song.order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    @songs = Song.order('found asc').order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -97,11 +97,11 @@ class SongsController < ApplicationController
   private
   
   def sort_column
-    Songs.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+    Song.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
   end
   
   def sort_direction
-    %w[asc desc].include?(prams[:direction]) ? params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
   end
   
 end
