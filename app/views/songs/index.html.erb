@@ -1,13 +1,12 @@
 <h1>Songs I Need</h1>
 <%= form_tag songs_path, :method => 'get' do %>
-	<p>
 		<%= hidden_field_tag :direction, params[:direction] %>
 		<%= hidden_field_tag :sort, params[:sort] %>
 		
 		<%= text_field_tag :search, params[:search] %>
 		<%= submit_tag "Search", :name => nil %>
-	</p>
 <% end %>
+
 <table class="pretty">
   <thead>
   <tr>
@@ -42,9 +41,9 @@
 </table>
 
 <%= will_paginate @songs %>
-<br />
-
+<br/>
 <%= link_to 'add new song', new_song_path %>
+
 <script type="text/javascript">
 	$('.song_found').click(function(){
 		var id = $(this).attr('data-id')
