@@ -1,4 +1,6 @@
 class SongsController < ApplicationController
+  helper_method :sort_column, :sort_direction
+  
   
   # GET /songs/toggle_found.json
   def toggle_found
@@ -11,7 +13,7 @@ class SongsController < ApplicationController
   # GET /songs
   # GET /songs.xml
   def index
-    @songs = Song.order('found ASC, created_at ASC, title')
+    @songs = Song.order(sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -90,4 +92,16 @@ class SongsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  
+  private
+  
+  def sort_column
+    Songs.column_names.include?(params[:sort]) ? params[:sort] : "created_at"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(prams[:direction]) ? params[:direction] : "asc"
+  end
+  
 end

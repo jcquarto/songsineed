@@ -3,11 +3,11 @@
 <table>
   <thead>
   <tr>
-    <th>Title</th>
-    <th>Artist</th>
-    <th>Album</th>
+    <th><%= sortable "title" %></th>
+    <th><%= sortable "artist" %></th>
+    <th><%= sortable "album" %></th>
     <th>Genres</th>
-	<th>Added</th>
+	<th><%= sortable "created_at", "Added" %></th>
 	<th>Found?</th>
 	<th>Notes</th>
     <!--<th></th>-->
@@ -33,6 +33,7 @@
   </tbody>
 </table>
 
+<%= will_paginate, @songs %>
 <br />
 
 <%= link_to 'add new song', new_song_path %>
