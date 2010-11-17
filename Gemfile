@@ -7,6 +7,7 @@ gem 'rails', '3.0.3'
 
 group :development do
   gem 'sqlite3-ruby', :require => 'sqlite3'
+  gem 'hpricot'
 end
 
 gem 'heroku'
@@ -17,7 +18,6 @@ gem 'annotate'
 # provide for pagination
 gem "will_paginate", "~> 3.0.pre2"
 
-gem 'hpricot'
 
 
 # Use unicorn as the web server
