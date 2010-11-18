@@ -11,14 +11,15 @@ class SongsController < ApplicationController
   end
   
   # GET /songs
-  # GET /songs.xml
   def index
     @songs = Song.search(params[:search]).order("found asc, " + sort_column + " " + sort_direction).paginate(:per_page => 10, :page => params[:page])
-
+    
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @songs }
+      format.js # index.js.erb
+      format.xml  { render :xml => @genres }
     end
+    
   end
 
   # GET /songs/1
@@ -26,10 +27,6 @@ class SongsController < ApplicationController
   def show
     @song = Song.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @song }
-    end
   end
 
   # GET /songs/new
@@ -37,11 +34,6 @@ class SongsController < ApplicationController
   def new
     @song = Song.new
     @genres = Genre.order("name ASC")
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @song }
-    end
   end
 
   # GET /songs/1/edit

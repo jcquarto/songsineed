@@ -1,5 +1,5 @@
 <h1>Songs I Need</h1>
-<%= form_tag songs_path, :method => 'get' do %>
+<%= form_tag songs_path, :method => 'get', :id => "songs_search" do %>
 		<%= hidden_field_tag :direction, params[:direction] %>
 		<%= hidden_field_tag :sort, params[:sort] %>
 		
@@ -7,40 +7,8 @@
 		<%= submit_tag "Search", :name => nil %>
 <% end %>
 
-<table class="pretty">
-  <thead>
-  <tr>
-    <th><%= sortable "title" %></th>
-    <th><%= sortable "artist" %></th>
-    <th><%= sortable "album" %></th>
-    <th>Genres</th>
-	<th><%= sortable "created_at", "Added" %></th>
-	<th>Found?</th>
-	<th>Notes</th>
-    <!--<th></th>-->
-    <th></th>
-    <th></th>
-  </tr>
-  </thead>
-  <tbody>
-<% @songs.each do |song| %>
-  <tr>
-    <td><%= song.title %></td>
-    <td><%= song.artist %></td>
-    <td><%= song.album %></td>
-    <td><%= song.genres.collect(&:name).to_sentence %></td>
-	<td><%= song.created_at.strftime("%D") %></td>
-	<td><input type="checkbox" class="song_found" data-id="<%= song.id %>" <%= (song.found) ? "checked" : "" %>></td>
-	<td><%= song.notes %></td>
-    <!--<td><%= link_to 'Show', song %></td>-->
-    <td><%= link_to 'Edit', edit_song_path(song) %></td>
-    <td><%= link_to 'Destroy', song, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-  </tbody>
-</table>
+<div id="songs"><%= render "songs" %></div>
 
-<%= will_paginate @songs %>
 <br/>
 <%= link_to 'add new song', new_song_path %>
 

@@ -29,7 +29,7 @@ task :install_jquery, :nogit do |t, args|
   
   # Setup jQuery
   puts "Downloading jQuery"
-  system "curl -L http://code.jquery.com/jquery-1.4.2.min.js > public/javascripts/jquery.js"
+  system "curl -L http://code.jquery.com/jquery-1.4.4.min.js > public/javascripts/jquery.js"
   system "curl -L http://github.com/rails/jquery-ujs/raw/master/src/rails.js > public/javascripts/rails.js"
   
   # Install initializer
