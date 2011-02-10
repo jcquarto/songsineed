@@ -4,7 +4,7 @@ class Song < ActiveRecord::Base
   
   def self.search(search)
     if search
-      where( 'title LIKE ? OR artist LIKE ? or album LIKE ?', "%#{search}%", "%#{search}%", "%#{search}%" )
+      where( 'title LIKE ? OR artist LIKE ? or album LIKE ?', "%#{search.downcase}%", "%#{search.downcase}%", "%#{search.downcase}%" )
     else
       scoped
     end
